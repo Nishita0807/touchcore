@@ -27,13 +27,13 @@ const currentSubtitles = ref([]);
 
 const onVideoUploaded = async (filename) => {
   videoFileName.value = filename;
-  videoSrc.value = `http://localhost:5000/uploads/${filename}`;
+  videoSrc.value = `https://vercel.com/nishita0807/video-api/3vRQ5GeMD5ugAidFDiQZjGkoHYz9/uploads/${filename}`;
   await fetchSubtitles(filename);
 };
 
 const onSubtitleAdded = (subtitle) => {
   axios
-    .post('http://localhost:5000/add_subtitle', {
+    .post('https://vercel.com/nishita0807/video-api/3vRQ5GeMD5ugAidFDiQZjGkoHYz9/add_subtitle', {
       videoSrc: videoFileName.value,
       timestamp: formatTime(currentTime.value),
       subtitle_text: subtitle
@@ -65,7 +65,7 @@ const calculateSecondsFromTimestamp = (timestamp) => {
 
 const fetchSubtitles = async (filename) => {
   try {
-    const response = await axios.get(`http://localhost:5000/get_subtitles/${filename}`);
+    const response = await axios.get(`https://vercel.com/nishita0807/video-api/3vRQ5GeMD5ugAidFDiQZjGkoHYz9/get_subtitles/${filename}`);
     subtitles.value = response.data.subtitles;
     updateCurrentSubtitles();
   } catch (error) {
